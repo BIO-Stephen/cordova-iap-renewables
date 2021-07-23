@@ -794,6 +794,7 @@ store._extractTransactionFields = function(that, t) {
         that.lastRenewalDate = new Date(parseInt(t.purchase_date_ms));
         that.expiryDate = new Date(parseInt(t.expires_date_ms));
         store.log.debug('expiryDate: ' + that.expiryDate.toISOString());
+	alert('ExpiryDate:'+t.expires_date_ms);
     }
     else if (t.type === 'android-playstore' && t.expiryTimeMillis > 0) {
         that.lastRenewalDate = new Date(parseInt(t.startTimeMillis));
@@ -801,8 +802,10 @@ store._extractTransactionFields = function(that, t) {
         store.log.debug('expiryDate: ' + that.expiryDate.toISOString());
     }
     // using unified transaction fields
-    if (t.expiryDate)
+    if (t.expiryDate){
         that.expiryDate = new Date(t.expiryDate);
+    	alert('ExpiryDate2:'+t.expiryDate);
+    }
     if (t.lastRenewalDate)
         that.lastRenewalDate = new Date(t.lastRenewalDate);
     if (t.renewalIntent)
